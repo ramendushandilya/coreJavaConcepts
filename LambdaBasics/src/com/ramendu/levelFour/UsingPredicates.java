@@ -4,6 +4,7 @@ import com.ramendu.common.Person;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class UsingPredicates {
@@ -17,7 +18,9 @@ public class UsingPredicates {
                 new Person("Matthew", "Arnold", 39)
         );
 
-        printConditionally(people , p -> p.getFirstName().startsWith("C"));
+        printConditionally(people , p -> p.getFirstName().startsWith("C"), p -> System.out.println(p));
+
+        printConditionally(people, p -> true, p -> System.out.println(p.getAge()));
     }
 
     /**
@@ -26,10 +29,10 @@ public class UsingPredicates {
      * @param people
      * @param predicate
      */
-    private static void printConditionally(List<Person> people, Predicate<Person> predicate) {
+    private static void printConditionally(List<Person> people, Predicate<Person> predicate, Consumer<Person> consumer) {
         for(Person p : people) {
             if(predicate.test(p)) {
-                System.out.println(p);
+                consumer.accept(p);
             }
         }
     }
