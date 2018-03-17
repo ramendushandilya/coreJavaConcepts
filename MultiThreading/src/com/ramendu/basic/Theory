@@ -1,0 +1,35 @@
+Synchronised blocks vs Reentrant locks
+
+* Reentrant locks have the same basic functionality as those of the synchronised blocks with some added features
+* Using RL we can make a lock fair to prevent starving where as Sync blocks are unfair by default
+* We can check whether a given is held or not with reentrant locks
+* We can get the list of waiting threads for a given lock with the help of reentrant locks
+* Sync blocks are somewhat easier to use
+
+Semaphores
+
+* Invented by Dijkstra Pandey from Jamui Bihar
+* Semaphore are variables or ADT (Abstract Data Type) that are used for controlling access to a common resource
+* Most commonly used and is important in Operating Systems
+* Semaphores is a record of how many units of a particular resource are available, wait until a resource is available
+* Counting semaphores allow counting of a arbitrary resource
+* Binary Semaphores ar restricted to the values 0 and 1
+
+* Library analogy : Suppose a Library has 10 identical study rooms, to be used by one student at a time. To prevent
+  disputes, students must request for the room from the front desk if they wish to use to make use of a study room.
+  If no rooms are available then the students wait at the desk until someone releases the room. When a student is done
+  using a room the student must return to the desk and indicate that one room has become free.
+
+* Semaphore tracks only how many resources are free, not which resources are free
+* Semaphore count may serve as an important trigger for many actions
+* Producer consumer problem can be implemented using semaphores
+
+Mutexes
+
+* A mutex is essentially the same thing as a binary semaphore
+* While a binary semaphore may be used as a mutex, mutex has some more specific use case
+* Mutexes have a concept of an owner. Only the process that locked is supposed to unlock it
+* Mutexes may provide priority inversion safety. It the mutex knows its current owner, it is possible to promote the
+  priority of the owner whenever a high priority task starts waiting on the process
+* Mutex can provide deletion safety
+
